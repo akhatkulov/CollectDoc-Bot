@@ -7,9 +7,9 @@ from sqlalchemy.orm import sessionmaker
 
 from conf import DB_URL
 
-# PostgreSQL uchun asinxron engine yaratish
-DATABASE_URL = DB_URL.replace('postgres://', 'postgresql+asyncpg://')
-engine = create_async_engine(DATABASE_URL, echo=True)
+
+
+engine = create_async_engine(DB_URL, echo=True,future=True)
 
 Base = declarative_base()
 
@@ -25,6 +25,7 @@ class User(Base):
     
 class User_Info(Base):
     __tablename__ = user_info_table_name
+    id = Column(Integer, primary_key=True, autoincrement=True)  # Added primary key
     cid = Column(BigInteger, unique=True)
     person_type = Column(String)
     passport_file_id = Column(String)
@@ -32,7 +33,6 @@ class User_Info(Base):
     obyektiv_id = Column(String)
     lang_id = Column(String)
     legal_id = Column(String)
-
 class Channels(Base):
     __tablename__ = channels_table_name
     id = Column(Integer, primary_key=True, autoincrement=True)

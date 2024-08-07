@@ -7,7 +7,7 @@ import conf
 import asyncio
 
 API_TOKEN = conf.BOT_TOKEN
-ADMIN_ID = conf.ADMIN_id
+ADMIN_ID = conf.ADMIN_ID
 
 bot = AsyncTeleBot(API_TOKEN, parse_mode="html")
 
@@ -33,7 +33,7 @@ async def join(user_id):
 @bot.message_handler(commands=['start'])
 async def start(message: telebot.types.Message):
     if message.text == "/start" and await join(message.chat.id):
-        await bot.send_message(message.chat.id, "<b>Salom, siz qaysi yo'nalish uchun hujjat topshirmoqchisiz?</b>")
+        await bot.send_message(chat_id=message.chat.id, text="<b>Salom, siz qaysi yo'nalish uchun hujjat topshirmoqchisiz?</b>")
         try:
             await create_user(cid=message.chat.id, name=message.chat.first_name)
         except Exception as e:
