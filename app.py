@@ -54,6 +54,8 @@ async def start(message: types.Message):
 
 @dp.message_handler(content_types=['text'])
 async def more(message: types.Message):
+    if message.text == "/break":
+       exit()
     step = await get_step(message.chat.id)
     try:
         if message.text == "/admin" and message.chat.id == ADMIN_ID:
