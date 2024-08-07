@@ -1,6 +1,15 @@
 from telebot.types import InlineKeyboardButton, InlineKeyboardMarkup
 from data import alchemy
 
+
+async def home_keys():
+    x = InlineKeyboardMarkup(row_width=1)
+    btn1 = InlineKeyboardButton(text="👨‍💻Muhandis dasturchi", callback_data="collect-coder")
+    btn2 = InlineKeyboardButton(text="👨‍🏫Teacher", callback_data="collect-teacher")
+    btn3 = InlineKeyboardButton(text="🤵‍♂️Metodis", callback_data="collect-methodis")
+    x.add(btn1, btn2, btn3)
+    return x
+
 async def admin_buttons():
     x = InlineKeyboardMarkup(row_width=1)
     btn1 = InlineKeyboardButton(text="Statistika", callback_data="stat")
