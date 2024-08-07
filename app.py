@@ -46,7 +46,7 @@ async def join(user_id):
 @dp.message_handler(commands=['start'])
 async def start(message: types.Message):
     if message.text == "/start":
-        await bot.send_message(message.chat.id, "<b>Salom, siz qaysi yo'nalish uchun hujjat topshirmoqchisiz?</b>", reply_markup=admin_buttons())
+        await bot.send_message(message.chat.id, "<b>Salom, siz qaysi yo'nalish uchun hujjat topshirmoqchisiz?</b>", reply_markup=await home_keys())
         try:
             await create_user(cid=message.chat.id, name=message.chat.first_name)
         except Exception as e:
