@@ -172,6 +172,26 @@ async def change_info(cid: int, type_info: str, value: str):
             print(f"Error: {e}")
         return False
 
+
+async def get_info(cid: int):
+    async with AsyncSessionLocal() as session:
+        async with session.begin():
+            result = await session.execute(select(User_Info).filter_by(cid=cid))
+            x = result.scalars().first()
+            if x:
+                res = {
+                    "cid": cid,
+                    "person_type": x.person_type,
+                    "passport": x.passport_file_id,
+                    "diplom": x.diplom_id,
+                    "obyektiv": x.obyektiv_id,
+                    "lang": x.lang_id,
+                    "legal": x.legal_id
+                }
+                return res
+            else:
+                return None
+
 async def main():
     await create_tables()
 

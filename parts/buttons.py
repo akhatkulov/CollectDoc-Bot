@@ -1,6 +1,5 @@
-from telebot.types import InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from data import alchemy
-
 
 async def home_keys():
     x = InlineKeyboardMarkup(row_width=1)
@@ -27,12 +26,12 @@ async def channel_control():
 
 async def home_keys():
     x = InlineKeyboardMarkup(row_width=1)
-    btn1 = InlineKeyboardMarkup(text="👨‍💻Muxandis dasturchi",callback_data="collect-coder")
-    btn2 = InlineKeyboardMarkup(text="👨‍🏫Informatika fani o'qituvchisi",callback_data="collect-teacher")
-    btn3 = InlineKeyboardMarkup(text="🤵‍♂️Metodis",callback_data="collect-methodic")
-    x.add(btn1,btn2,btn3)
+    btn1 = InlineKeyboardButton(text="👨‍💻Muxandis dasturchi", callback_data="collect-coder")
+    btn2 = InlineKeyboardButton(text="👨‍🏫Informatika fani o'qituvchisi", callback_data="collect-teacher")
+    btn3 = InlineKeyboardButton(text="🤵‍♂️Metodis", callback_data="collect-methodic")
+    x.add(btn1, btn2, btn3)
     return x
-    
+
 async def join_key():
     keyboard = InlineKeyboardMarkup(row_width=1)
     x = await alchemy.get_channel()  
